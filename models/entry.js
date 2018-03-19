@@ -14,9 +14,10 @@ var Schema = mongoose.Schema;
 
 var entrySchema = new Schema({
   // author, bond to user
-  author: {type: Schema.Types.ObjectId, ref: 'User'},
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
   // text part of diary: keywords
   keywords: [{ type: String, max: 40 }],
+  content: { typr: String, max: 1000 },
   // path of photo
   face_photo: { type: String,  max: 200, required: true},
   // TODO: emotions
