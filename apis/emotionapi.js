@@ -1,27 +1,18 @@
-function processImage() {
-  // **********************************************
-  // *** Update or verify the following values. ***
-  // **********************************************
+var https = require("https");
 
-  // Replace the subscriptionKey string value with your valid subscription key.
-  var subscriptionKey = "59c0c894449d46fe9d2d1c439575655c";
+var subscriptionKey = "59c0c894449d46fe9d2d1c439575655c";
+var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+// Request parameters.
+var params = {
+  "returnFaceId": "true",
+  "returnFaceLandmarks": "false",
+  "returnFaceAttributes": "emotion",
+  // "returnFaceAttributes": "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
+};
 
-  // Replace or verify the region.
-  //
-  // You must use the same region in your REST API call as you used to obtain your subscription keys.
-  // For example, if you obtained your subscription keys from the westus region, replace
-  // "westcentralus" in the URI below with "westus".
-  //
-  // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
-  // a free trial subscription key, you should not need to change this region.
-  var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
-  // Request parameters.
-  var params = {
-    "returnFaceId": "true",
-    "returnFaceLandmarks": "false",
-    "returnFaceAttributes": "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
-  };
+
+function getEmotion(imageUrl) {
 
   // Display the image.
   var sourceImageUrl = document.getElementById("inputImage").value;
