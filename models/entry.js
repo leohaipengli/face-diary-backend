@@ -34,7 +34,7 @@ var entrySchema = new Schema({
   {
     // update date field (createdAt, updatedAt) of document before saved
     timestampes: true
-  }  );
+  });
 
 // entrySchema.pre('save', setTimestamps);
 var Entry = mongoose.model('Book', entrySchema);
