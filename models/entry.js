@@ -20,8 +20,17 @@ var entrySchema = new Schema({
   content: { typr: String, max: 1000 },
   // path of photo
   face_photo: { type: String,  max: 200, required: true},
-  // TODO: emotions
-  },
+  // get from azure api
+  emotion: {
+    anger: { type: Number, min: 0, max: 1 },
+    contempt: { type: Number, min: 0, max: 1 },
+    disgust: { type: Number, min: 0, max: 1 },
+    fear: { type: Number, min: 0, max: 1 },
+    happiness: { type: Number, min: 0, max: 1 },
+    neutral: { type: Number, min: 0, max: 1 },
+    sadness: { type: Number, min: 0, max: 1 },
+    surprise: { type: Number, min: 0, max: 1 }
+  }},
   {
     // update date field (createdAt, updatedAt) of document before saved
     timestampes: true
