@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+var test = require('../tools/jsonresponse');
+router.get('test', function () {
+  test();
+});
+
 module.exports = router;
