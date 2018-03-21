@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategt = require('passport-facebook').Strategy;
 
 var mongoDB = 'mongodb://127.0.0.1/facediary';
 mongoose.connect(mongoDB);
@@ -51,7 +52,19 @@ app.use('/emotion', emotion);
 
 // passport config
 var User = require('./models/user');
-passport.use(User.createStrategy())
+var consts = require('./consts');
+passport.use(User.createStrategy());
+// passport.use(new FacebookStrategt({
+//     clientID: consts.FACEBOOK_APP_ID,
+//     clientSecret: consts.FACEBOOK_APP_SECRET,
+//     callbackURL: consts.BASE_URL + "/users/facebook/callback"
+//   },
+//   function(accessToken, refreshToken, profile, cb) {
+//     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

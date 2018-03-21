@@ -1,15 +1,16 @@
 var express = require('express');
 var generalResponse = require('../tools/generalResponse');
+var consts =require('../consts');
 const request = require('request');
 
 var router = express.Router();
 
 var options = {
-  url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect',
+  url: consts.EMOTION_API_URL,
   method: 'post',
   headers: {
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': '59c0c894449d46fe9d2d1c439575655c',
+    'Ocp-Apim-Subscription-Key': consts.EMOTION_API_KEY,
   },
   qs: {
     "returnFaceId": "true",
