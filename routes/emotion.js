@@ -28,7 +28,12 @@ router.post('/detect', function(req, res, next) {
   options.json.url = imageUrl;
   request(options, function (err, response, body) {
     if (!err && response.statusCode === 200) {
-      res.json(body);
+      if (body.length === 0) {
+        // if there are no faces
+        res.status(400).json({ "error": { "code": "NoFaceDetected", "message": "No Face Detected." } });
+      } else {
+        res.json(body[0].faceAttributes.emotion);
+      }
     } else {
       res.status(400).json(body);
     }
