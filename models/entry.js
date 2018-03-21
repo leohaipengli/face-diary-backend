@@ -17,11 +17,13 @@ var entrySchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   // text part of diary: keywords
   keywords: [{ type: String, max: 40 }],
+  // createAt
+  // updatedAt
   content: { typr: String, max: 1000 },
   // path of photo
   face_photo: { type: String,  max: 200, required: true},
   // get from azure api
-  emotion: {
+  emotions: {
     anger: { type: Number, min: 0, max: 1 },
     contempt: { type: Number, min: 0, max: 1 },
     disgust: { type: Number, min: 0, max: 1 },
@@ -33,7 +35,7 @@ var entrySchema = new Schema({
   }},
   {
     // update date field (createdAt, updatedAt) of document before saved
-    timestampes: true
+    timestamps: true
   });
 
 // entrySchema.pre('save', setTimestamps);
