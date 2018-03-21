@@ -1,4 +1,5 @@
 var express = require('express');
+var generalResponse = require('../tools/generalResponse');
 const request = require('request');
 
 var router = express.Router();
@@ -30,12 +31,12 @@ router.post('/detect', function(req, res, next) {
     if (!err && response.statusCode === 200) {
       if (body.length === 0) {
         // if there are no faces
-        res.status(400).json({ "error": { "code": "NoFaceDetected", "message": "No Face Detected." } });
+        res.json(generalResponse.json(false, null, "No Face Detected"));
       } else {
-        res.json(body[0].faceAttributes.emotion);
+        res.json(generalResponse.json(true, {emotions: body[0].faceAttributes.emotion}));
       }
     } else {
-      res.status(400).json(body);
+      res.json(generalResponse.json(false, null, body.error.message));
     }
   });
 });

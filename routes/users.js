@@ -1,11 +1,21 @@
 var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
+var generalResponse = require('../tools/generalResponse');
 var router = express.Router();
 
 /* GET users listing. */
 router.get('/me', function (req, res, next) {
-  res.json({ user: req.user });
+  if (!req.user) {
+    res.json(generalResponse.json(false, null, "Please Login"));
+  } else {
+    res.json(generalResponse.json(true, {
+      user: {
+        email: req.user.email,
+        name: req.user.name,
+      }
+    }));
+  }
 });
 
 // TODO: require privileges
@@ -15,18 +25,36 @@ router.get('/:email/info', function (req, res, next) {
 });
 
 router.post('/register', function (req, res, next) {
-  User.register(new User({ email: req.body.email }), req.body.password, function (err, user) {
+  User.register(new User({ email: req.body.email, name: req.body.name }), req.body.password, function (err, user) {
     if (err) {
-      return res.status(400).json( err );
+      return res.json(generalResponse.json(false, null, err.message));
     }
     passport.authenticate('local')(req, res, function () {
-      res.json({ status: 'success' });
+      res.json(generalResponse.json());
     })
   })
 });
 
-router.post('/login', passport.authenticate('local'), function (req, res) {
-  res.json({ status: 'success' });
+router.post('/login', passport.authenticate('local'), function (req, res, next) {
+    if (!req.user) {
+      res.json(generalResponse.json(false, null, "Wrong email or password"));
+    } else {
+      res.json(generalResponse.json(true, {
+          user: {
+            email: req.user.email,
+            name: req.user.name,
+          }
+      }));
+    }
+});
+
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.json(generalResponse.json());
+});
+
+router.get('/is-login', function (req, res, next) {
+  res.json(generalResponse.json(true, !!req.user));
 });
 
 module.exports = router;
