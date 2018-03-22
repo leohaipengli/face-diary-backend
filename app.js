@@ -8,6 +8,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategt = require('passport-facebook').Strategy;
+var User = require('./models/user');
+var consts = require('./consts');
 
 var mongoDB = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary';
 mongoose.connect(mongoDB);
@@ -51,8 +53,6 @@ app.use('/users', users);
 app.use('/emotion', emotion);
 
 // passport config
-var User = require('./models/user');
-var consts = require('./consts');
 passport.use(User.createStrategy());
 // passport.use(new FacebookStrategt({
 //     clientID: consts.FACEBOOK_APP_ID,

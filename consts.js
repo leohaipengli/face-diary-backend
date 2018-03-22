@@ -1,3 +1,6 @@
+// media file
+exports.MEDIA_ROOT = process.cwd() + '/media/';
+exports.FILENAME_LENGTH = 20;
 // backend api base url
 exports.BASE_URL = 'localhost:3001';
 

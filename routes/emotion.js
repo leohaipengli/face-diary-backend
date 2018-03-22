@@ -1,7 +1,20 @@
 var express = require('express');
+var multer = require('multer');
 var generalResponse = require('../tools/generalResponse');
-var consts =require('../consts');
+var consts = require('../consts');
+var randomString = require('../tools/randomString').randomString;
 const request = require('request');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, consts.MEDIA_ROOT)
+  },
+  filename: function (req, file, cb) {
+    cb(null, randomString(consts.FILENAME_LENGTH));
+  }
+});
+
+var upload = multer({ storage: storage });
 
 var router = express.Router();
 
@@ -41,5 +54,10 @@ router.post('/detect', function(req, res, next) {
     }
   });
 });
+
+router.post('/upload', upload.single('photo'), function (req, res, next) {
+  res.json(generalResponse.json(true, req.file));
+});
+
 
 module.exports = router;

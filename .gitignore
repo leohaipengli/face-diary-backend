@@ -1,3 +1,6 @@
+# media files
+media/*
+
 # OS X
 .DS_Store*
 Icon?

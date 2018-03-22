@@ -26,6 +26,7 @@ See [here](https://csil-git1.cs.surrey.sfu.ca/CMPT470WindowsVista/face-diary/wik
 
 ## Todo
 - Learn uploading image file, and serving
+- Immigrate to Typescript 
 - Diary retrieve api
 - Facebook login api  # postponed because of insecure http is forbidden.
 - Deployment
