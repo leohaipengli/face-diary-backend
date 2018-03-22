@@ -22,8 +22,7 @@ $ set PORT=3001 DEBUG=face-diart:* & npm run devstart
 note that the port number is set to 3001 to avoid confict of React server.
 
 ## Todo
-- Use cloud MongoDB
-- Facebook login api  # postponed because of insecure http is forbidden.
 - Learn uploading image file, and serving
 - Diary retrieve api
+- Facebook login api  # postponed because of insecure http is forbidden.
 - Deployment
