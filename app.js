@@ -9,7 +9,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategt = require('passport-facebook').Strategy;
 
-var mongoDB = 'mongodb://127.0.0.1/facediary';
+var mongoDB = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary';
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
