@@ -21,7 +21,7 @@ var entrySchema = new Schema({
   // updatedAt
   content: { typr: String, max: 1000 },
   // path of photo
-  face_photo: { type: String,  max: 200, required: true},
+  facePhoto: { type: String,  max: 200, required: true},
   // get from azure api
   emotions: {
     anger: { type: Number, min: 0, max: 1 },
