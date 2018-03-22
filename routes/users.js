@@ -35,18 +35,14 @@ router.post('/register', function (req, res, next) {
   })
 });
 
-router.post('/login', passport.authenticate('local'), function (req, res, next) {
-    if (!req.user) {
-      res.json(generalResponse.json(false, null, "Wrong email or password"));
-    } else {
-      res.json(generalResponse.json(true, {
-          user: {
-            email: req.user.email,
-            name: req.user.name,
-          }
-      }));
-    }
+router.get('/login-failed', function (req, res) {
+  res.json(generalResponse.json(false, null, "Wrong email or password"));
 });
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/users/me',
+  failureRedirect: '/users/login-failed'
+}));
 
 router.get('/logout', function (req, res) {
   req.logout();
