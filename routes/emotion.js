@@ -1,5 +1,7 @@
 var express = require('express');
 var multer = require('multer');
+var path = require('path');
+var crypto = require('crypto');
 var generalResponse = require('../tools/generalResponse');
 var consts = require('../consts');
 var randomString = require('../tools/randomString').randomString;
@@ -7,10 +9,15 @@ const request = require('request');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, consts.MEDIA_ROOT + 'photo/')
+    cb(null, path.join(consts.MEDIA_ROOT + 'photos'))
   },
   filename: function (req, file, cb) {
-    cb(null, randomString(consts.FILENAME_LENGTH));
+    crypto.pseudoRandomBytes(16, function(err, raw) {
+      if (err) return cb(err);
+
+      cb(null, raw.toString('hex') + path.extname(file.originalname));
+    });
+    // cb(null, randomString(consts.FILENAME_LENGTH) + path.extname(file.originalname));
   }
 });
 
@@ -56,7 +63,10 @@ router.post('/detect', function(req, res, next) {
 });
 
 router.post('/upload', upload.single('photo'), function (req, res, next) {
-  res.json(generalResponse.json(true, req.file));
+  if (!req.file) {
+    return res.json(generalResponse.json(false, null, "No file received"));
+  }
+  return res.json(generalResponse.json(true, req.file));
 });
 
 
