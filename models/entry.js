@@ -19,7 +19,7 @@ var entrySchema = new Schema({
   keywords: [{ type: String, max: 40 }],
   // createAt
   // updatedAt
-  content: { typr: String, max: 1000 },
+  content: { type: String, max: 1000 },
   // path of photo
   facePhoto: { type: String,  max: 200, required: true},
   // get from azure api

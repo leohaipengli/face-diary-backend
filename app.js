@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategt = require('passport-facebook').Strategy;
+var serveStatic = require('serve-static');
 var User = require('./models/user');
 var consts = require('./consts');
 
@@ -25,6 +26,7 @@ mongoose.set('debug', true);
 var index = require('./routes/index');
 var users = require('./routes/users');
 var emotion = require('./routes/emotion');
+var entries = require('./routes/entries');
 
 var app = express();
 
@@ -46,11 +48,16 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// serve static files
+app.use(serveStatic(path.join(__dirname, 'public')));
+// serve media files
+app.use(serveStatic(path.join(__dirname, 'media')));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/emotion', emotion);
+app.use('/entries', entries);
 
 // passport config
 passport.use(User.createStrategy());

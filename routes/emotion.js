@@ -7,7 +7,7 @@ const request = require('request');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, consts.MEDIA_ROOT)
+    cb(null, consts.MEDIA_ROOT + 'photo/')
   },
   filename: function (req, file, cb) {
     cb(null, randomString(consts.FILENAME_LENGTH));
