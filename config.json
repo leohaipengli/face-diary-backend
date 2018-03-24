@@ -1,0 +1,11 @@
+[
+  {
+    // App1
+    "uid": "facediary",
+    "append": true,
+    "watch": true,
+    "script": "index.js",
+    "sourceDir": "./app.js",
+    "args": ["--port", "3001"]
+  },
+]
