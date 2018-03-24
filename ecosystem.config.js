@@ -2,9 +2,12 @@ module.exports = {
   apps : [
     {
       name: "face-diary",
-      script: "./app.js",
+      script: "./bin/www",
       watch: true,
-      "port": 3001,
+      env: {
+          "PORT": 3001,
+          "NODE_ENV": "development"
+      },
     }
   ]
 };
