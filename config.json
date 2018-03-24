@@ -4,8 +4,8 @@
     "uid": "facediary",
     "append": true,
     "watch": true,
-    "script": "index.js",
-    "sourceDir": "./app.js",
+    "script": "app.js",
+    "sourceDir": "./",
     "args": ["--port", "3001"]
   },
 ]
