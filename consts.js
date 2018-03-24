@@ -1,6 +1,10 @@
 // media file
 exports.MEDIA_ROOT = process.cwd() + '/media/';
 exports.FILENAME_LENGTH = 20;
+
+// Mongo Remote
+exports.MONGO_URI = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary';
+
 // backend api base url
 exports.BASE_URL = 'localhost:3001';
 

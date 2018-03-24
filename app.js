@@ -12,7 +12,7 @@ var serveStatic = require('serve-static');
 var User = require('./models/user');
 var consts = require('./consts');
 
-var mongoDB = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary';
+var mongoDB = consts.MONGO_URI;
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
