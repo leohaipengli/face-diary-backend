@@ -44,9 +44,14 @@ var options = {
 };
 
 /* GET users listing. */
-router.post('/detect', function(req, res, next) {
+router.post('/detect', upload.single('photo'), function(req, res, next) {
   // TODO: receive image data, store it in media files, and get a url to replace imageUrl
-  var imageUrl = req.body.url;
+  if (!req.file) {
+    return res.json(generalResponse.json(false, null, "No file received"));
+  }
+  // received file
+  var imageUrl = consts.BASE_URL + '/photos' + req.file.filename;
+  // var imageUrl = req.body.url;
   options.json.url = imageUrl;
   request(options, function (err, response, body) {
     if (!err && response.statusCode === 200) {
@@ -66,6 +71,8 @@ router.post('/upload', upload.single('photo'), function (req, res, next) {
   if (!req.file) {
     return res.json(generalResponse.json(false, null, "No file received"));
   }
+  // received file
+  var fileUrl = consts.BASE_URL + '/photos' + req.file.filename;
   return res.json(generalResponse.json(true, req.file));
 });
 
