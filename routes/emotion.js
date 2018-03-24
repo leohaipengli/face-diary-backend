@@ -72,8 +72,21 @@ router.post('/upload', upload.single('photo'), function (req, res, next) {
     return res.json(generalResponse.json(false, null, "No file received"));
   }
   // received file
-  var fileUrl = consts.BASE_URL + '/photos' + req.file.filename;
-  return res.json(generalResponse.json(true, req.file));
+  var imageUrl = consts.BASE_URL + '/photos' + req.file.filename;
+  // var imageUrl = req.body.url;
+  options.json.url = imageUrl;
+  request(options, function (err, response, body) {
+    if (!err && response.statusCode === 200) {
+      if (body.length === 0) {
+        // if there are no faces
+        res.json(generalResponse.json(false, null, "No Face Detected"));
+      } else {
+        res.json(generalResponse.json(true, {emotions: body[0].faceAttributes.emotion}));
+      }
+    } else {
+      res.json(generalResponse.json(false, null, body.error.message));
+    }
+  });
 });
 
 
