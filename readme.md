@@ -25,12 +25,6 @@ note that the port number is set to 3001 to avoid confict of React server.
 See [here](https://csil-git1.cs.surrey.sfu.ca/CMPT470WindowsVista/face-diary/wikis/apis) for whole list 
 
 ## Todo
-- Deployment
-    - Deploy first to avoid image url problem
-- Learn uploading image file, and serving
-    - Combine upload & detect
-        - Problem: localhost image url ?
-    - File filter (size, type)
 - Diary retrieve api
     - get list
     - get detail
