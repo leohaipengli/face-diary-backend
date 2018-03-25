@@ -56,7 +56,7 @@ router.post('/detect', function(req, res, next) {
         // if there are no faces
         res.json(generalResponse.json(false, null, "No Face Detected"));
       } else {
-        res.json(generalResponse.json(true, {emotions: body[0].faceAttributes.emotion}));
+        res.json(generalResponse.json(true, body[0].faceAttributes.emotion));
       }
     } else {
       res.json(generalResponse.json(false, null, body.error.message));
