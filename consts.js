@@ -6,7 +6,7 @@ exports.FILENAME_LENGTH = 20;
 exports.MONGO_URI = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary';
 
 // backend api base url
-exports.BASE_URL = 'http://api.face.leoleo.win:88';
+exports.BASE_URL = 'https://api.facediary.leoleo.win';
 
 // facebook api
 exports.FACEBOOK_APP_ID = '197796200823028';
