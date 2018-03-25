@@ -51,9 +51,11 @@ router.post('/detect', upload.single('photo'), function(req, res, next) {
   }
   // received file
   var imageUrl = consts.BASE_URL + '/photos/' + req.file.filename;
+  console.log("Image URL" + imageUrl);
   // var imageUrl = req.body.url;
   options.json.url = imageUrl;
   request(options, function (err, response, body) {
+    console.log("Request Sent");
     if (!err && response.statusCode === 200) {
       if (body.length === 0) {
         // if there are no faces
