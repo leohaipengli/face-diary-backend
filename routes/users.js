@@ -25,6 +25,7 @@ router.get('/:email/info', function (req, res, next) {
 });
 
 router.post('/register', function (req, res, next) {
+  console.log(req.body);
   User.register(new User({ email: req.body.email, name: req.body.name }), req.body.password, function (err, user) {
     if (err) {
       return res.json(generalResponse.json(false, null, err.message));
