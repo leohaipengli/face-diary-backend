@@ -7,7 +7,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/me', function (req, res, next) {
   if (!req.user) {
-    res.json(generalResponse.json('unauthorized', null, "Please Login"));
+    res.json(generalResponse.json('unauthenticated', null, "Please Login"));
   } else {
     res.json(generalResponse.json(true, {
       user: {
