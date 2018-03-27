@@ -7,7 +7,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/me', function (req, res, next) {
   if (!req.user) {
-    res.json(generalResponse.json(false, null, "Please Login"));
+    res.json(generalResponse.json('unauthorized', null, "Please Login"));
   } else {
     res.json(generalResponse.json(true, {
       user: {
@@ -25,7 +25,6 @@ router.get('/:email/info', function (req, res, next) {
 });
 
 router.post('/register', function (req, res, next) {
-  console.log(req.body);
   User.register(new User({ email: req.body.email, name: req.body.name }), req.body.password, function (err, user) {
     if (err) {
       return res.json(generalResponse.json(false, null, err.message));

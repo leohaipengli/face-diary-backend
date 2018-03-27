@@ -8,7 +8,12 @@
 * */
 
 function json (status, payload, message) {
-  status = (typeof status !== 'undefined') ? status : true;
+  status = (typeof status !== 'undefined') ? status : "success";
+  if (status === true) {
+    status = 'success';
+  } else if (status === false) {
+    status = 'fail'
+  }
   payload = (typeof payload !== 'undefined') ? payload : null;
   message = (typeof message !== 'undefined') ? message : null;
   res = {
