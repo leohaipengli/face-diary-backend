@@ -25,6 +25,14 @@ var upload = multer({
   storage: storage,
   limits: {
     fileSize: consts.MAX_IMAGE_SIZE,
+  },
+  fileFilter: function (req, file, cb) {
+    var ext = path.extname(file.originalname).toLocaleLowerCase();
+    console.log(ext);
+    if (consts.ACCEPTED_IMAGE_TYPE.findIndex(function (value) { return value === ext }) === -1) {
+      return cb(new Error('Only ' + consts.ACCEPTED_IMAGE_TYPE + ' are allowed'));
+    }
+    cb(null, true);
   }
 });
 

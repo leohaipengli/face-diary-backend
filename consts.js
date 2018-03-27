@@ -1,5 +1,6 @@
 // media file
 exports.MEDIA_ROOT = process.cwd() + '/media/';
+exports.ACCEPTED_IMAGE_TYPE = ['.tif', '.tiff', '.jpeg', '.jpg', '.png', '.bmp'];
 exports.MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 exports.FILENAME_LENGTH = 20;
 
