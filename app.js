@@ -62,7 +62,7 @@ var corsOptions = {
   credentials: true // enable set cookie
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use('/', index);
 app.use('/users', users);
