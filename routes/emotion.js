@@ -21,7 +21,12 @@ var storage = multer.diskStorage({
   }
 });
 
-var upload = multer({ storage: storage });
+var upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: consts.MAX_IMAGE_SIZE,
+  }
+});
 
 var router = express.Router();
 

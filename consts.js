@@ -1,5 +1,6 @@
 // media file
 exports.MEDIA_ROOT = process.cwd() + '/media/';
+exports.MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 exports.FILENAME_LENGTH = 20;
 
 // Mongo Remote
