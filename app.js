@@ -9,6 +9,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategt = require('passport-facebook').Strategy;
 var serveStatic = require('serve-static');
+var cors = require('cors');
 var User = require('./models/user');
 var consts = require('./consts');
 
@@ -54,21 +55,13 @@ app.use(serveStatic(path.join(__dirname, 'public')));
 // serve media files
 app.use(serveStatic(path.join(__dirname, 'media')));
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+var corsOptions = {
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  methods:['GET','POST', 'OPTIONS'],
+  credentials: true // enable set cookie
+}
 
-  //intercepts OPTIONS method
-  if ('OPTIONS' === req.method) {
-    //respond with 200
-    res.send(200);
-  }
-  else {
-    //move on
-    next();
-  }
-});
+app.use(cors(corsOptions));
 
 app.use('/', index);
 app.use('/users', users);
