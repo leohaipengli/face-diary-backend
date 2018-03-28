@@ -81,6 +81,8 @@ app.use(function (req, res, next) {
 
   if ('OPTIONS' === req.method) {
     //respond with 200
+    console.log("OPTIONS! Send 200 directly!");
+    console.log(res);
     res.send(200);
   }
 
