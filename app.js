@@ -79,6 +79,11 @@ app.use(function (req, res, next) {
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
 
+  if ('OPTIONS' === req.method) {
+    //respond with 200
+    res.send(200);
+  }
+
   // Pass to next layer of middleware
   next();
 });
