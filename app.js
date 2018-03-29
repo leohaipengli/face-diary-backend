@@ -67,7 +67,8 @@ var corsOptions = {
 app.use(function (req, res, next) {
 
   var origin = req.get('origin');
-  if (consts.ALLOWED_HOSTS.findIndex(function (value) { return value === origin }) === -1) {
+  console.log(origin);
+  if (consts.ALLOWED_HOSTS.findIndex(function (value) { return value === origin }) >= 0) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
   // Website you wish to allow to connect
