@@ -1,3 +1,6 @@
+# vagrant stuff
+.vagrant/
+vagrant_ansible_inventory_default
 
 # OS X
 .DS_Store*
