@@ -1,0 +1,8 @@
+{
+  // Comments are supported
+  "uid": "facediary",
+  "append": true,
+  "watch": true,
+  "script": "bin/www",
+  "sourceDir": "."
+}
