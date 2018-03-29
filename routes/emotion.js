@@ -2,10 +2,14 @@ var express = require('express');
 var multer = require('multer');
 var path = require('path');
 var crypto = require('crypto');
+var Emotion = require('../models/emotion');
+var Entry = require('../models/entry');
 var generalResponse = require('../tools/generalResponse');
 var consts = require('../consts');
 var randomString = require('../tools/randomString').randomString;
+var requireLogin = require('../tools/requireLogin').requireLogin;
 const request = require('request');
+
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -56,6 +60,8 @@ var options = {
   },
 };
 
+router.use(requireLogin);
+
 /* GET users listing. */
 router.post('/detect', function(req, res, next) {
   // TODO: receive image data, store it in media files, and get a url to replace imageUrl
@@ -84,6 +90,30 @@ router.post('/upload', upload.single('photo'), function (req, res, next) {
   // received file
   // var fileUrl = consts.BASE_URL + '/photos' + req.file.filename;
   return res.json(generalResponse.json(true, { url: consts.BASE_URL + '/photos/' + req.file.filename }));
+});
+
+router.get('/summary', function (req, res) {
+  // monthly summary
+  var now = new Date();
+  var last_month = new Date(now);
+  last_month.setDate(now.getDate() - 1);
+  Entry.find({
+    author: req.user._id,
+  })  // .where('createdAt').gt(last_month).lt(now)
+    .populate('emotions')
+    .exec(function (err, queries) {
+      var emotions = new Emotion();
+      for (var i = 0; i < queries.length; i++) {
+        var query_emotions = queries[i].emotions;
+        for (var emotion in query_emotions.schema.paths) {
+          emotions[emotion] += query_emotions[emotion];
+        }
+      }
+      for (var emotion in emotions.schema.paths) {
+        emotions[emotion] /= queries.length;
+      }
+      return res.json(generalResponse.json(true, emotions));
+    })
 });
 
 

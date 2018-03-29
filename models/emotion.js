@@ -3,14 +3,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var emotionSchema = new Schema({
-  anger: { type: Number, min: 0, max: 1, required: true },
-  contempt: { type: Number, min: 0, max: 1, required: true },
-  disgust: { type: Number, min: 0, max: 1, required: true },
-  fear: { type: Number, min: 0, max: 1, required: true },
-  happiness: { type: Number, min: 0, max: 1, required: true },
-  neutral: { type: Number, min: 0, max: 1, required: true },
-  sadness: { type: Number, min: 0, max: 1, required: true },
-  surprise: { type: Number, min: 0, max: 1, required: true }
+  anger: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  contempt: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  disgust: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  fear: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  happiness: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  neutral: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  sadness: { type: Number, min: 0, max: 1, required: true, default: 0 },
+  surprise: { type: Number, min: 0, max: 1, required: true, default: 0 }
 });
 
 // transform
