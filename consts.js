@@ -1,3 +1,6 @@
+// CORS
+
+exports.ALLOWED_HOSTS = ['http://localhost:3000', 'http://18.220.255.229:5000'];
 // media file
 exports.MEDIA_ROOT = process.cwd() + '/media/';
 exports.ACCEPTED_IMAGE_TYPE = ['.tif', '.tiff', '.jpeg', '.jpg', '.png', '.bmp'];
