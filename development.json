@@ -4,5 +4,7 @@
   "append": true,
   "watch": true,
   "script": "bin/www",
-  "sourceDir": "."
+  "sourceDir": ".",
+  "args": ["--port", "3001"]
+
 }
