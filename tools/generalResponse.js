@@ -20,7 +20,7 @@ function json (status, payload, message) {
     status: status,
     payload: payload,
   };
-  if (!status) {
+  if (status !== 'success') {
     res.message = message;
   }
   return res;
