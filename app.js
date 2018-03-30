@@ -130,7 +130,7 @@ passport.use(new FacebookStrategy({
       if (existingUser) {
         return done(undefined, existingUser);
       } else {
-        User.register(new User({ email: profile.id, name: profile.name }), null, function (err, user) {
+        User.register(new User({ email: profile.id, name: profile.name, facebookId: profile.id }), null, function (err, user) {
           if (err) {
             return res.json(generalResponse.json(false, null, err.message));
           }
