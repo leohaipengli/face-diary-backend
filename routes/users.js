@@ -6,7 +6,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/me', function (req, res, next) {
-  if (!req.user) {
+  if (!req.isAuthenticated()) {
     res.json(generalResponse.json('unauthenticated', null, "Please Login"));
   } else {
     res.json(generalResponse.json(true, req.user));
@@ -29,6 +29,13 @@ router.post('/register', function (req, res, next) {
     })
   })
 });
+
+router.get('/facebook-login', passport.authenticate('facebook'));
+
+router.get('/facebook-token', passport.authenticate('facebook', { failureRedirect: '/login-failed' }),
+  function(req, res){
+    res.json(generalResponse.json(true, req.user));
+  });
 
 router.get('/login-failed', function (req, res) {
   res.json(generalResponse.json(false, null, "Wrong email or password"));
