@@ -6,7 +6,6 @@ var userSchema = new Schema({
   email: { type: String, max: 100, required: true, unique: true },
   // password: { type: String, min: 6, max: 20,  required: true},
   name: { type: String, max: 30, required: true },
-  diary: [{ type: Schema.Types.ObjectId, ref: 'Entry' }],
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
