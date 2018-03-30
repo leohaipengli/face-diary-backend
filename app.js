@@ -66,8 +66,13 @@ var corsOptions = {
 
 app.use(function (req, res, next) {
 
-  var origin = req.get('origin');
-  res.setHeader('Access-Control-Allow-Origin', origin);
+  // console.log(req.headers);
+  var origin = req.headers.origin;
+  console.log(origin);
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+
   // console.log(origin);
   // if (consts.ALLOWED_HOSTS.findIndex(function (value) { return value === origin }) >= 0) {
   //   res.setHeader('Access-Control-Allow-Origin', origin);
