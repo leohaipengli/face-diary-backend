@@ -32,10 +32,10 @@ router.post('/register', function (req, res, next) {
 
 router.get('/facebook-login', passport.authenticate('facebook'));
 
-router.get('/facebook-token', passport.authenticate('facebook', { failureRedirect: '/login-failed' }),
-  function(req, res){
-    res.json(generalResponse.json(true, req.user));
-  });
+router.get('/facebook-token', passport.authenticate('facebook', {
+  successRedirect: '/users/me',
+  failureRedirect: '/login-failed'
+}));
 
 router.get('/login-failed', function (req, res) {
   res.json(generalResponse.json(false, null, "Wrong email or password"));

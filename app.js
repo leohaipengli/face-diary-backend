@@ -119,18 +119,36 @@ passport.use(User.createStrategy());
 passport.use(new FacebookStrategy({
     clientID: '426431911145370',
     clientSecret: '651d9f3824052cd8e9f3f6c5664cbea2',
-    callbackURL: 'https://api.facediary.leoleo.win/users/facebook-token'
+    callbackURL: 'https://api.facediary.leoleo.win/users/facebook-token',
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-    process.nextTick(function () {
+    if (req.user) {
+      req.logout();
+    }
+    User.findOne({ facebookId: profile.id }, function (err, existingUser) {
+      if (existingUser) {
+        return done(undefined, existingUser);
+      } else {
+        User.register(new User({ email: profile.id, name: profile.name }), null, function (err, user) {
+          if (err) {
+            return res.json(generalResponse.json(false, null, err.message));
+          }
+          passport.authenticate('local')(req, res, function () {
+            res.json(generalResponse.json());
+          });
+        })
+      }
 
-      // To keep the example simple, the user's Facebook profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Facebook account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
     });
+    // process.nextTick(function () {
+    //
+    //   // To keep the example simple, the user's Facebook profile is returned to
+    //   // represent the logged-in user.  In a typical application, you would want
+    //   // to associate the Facebook account with a user record in your database,
+    //   // and return that user instead.
+    //   return done(null, profile);
+    // });
   }
 ));
 
