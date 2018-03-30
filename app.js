@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategt = require('passport-facebook').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var serveStatic = require('serve-static');
 var cors = require('cors');
 var User = require('./models/user');
@@ -116,8 +116,31 @@ passport.use(User.createStrategy());
 //     });
 //   }
 // ));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new FacebookStrategy({
+    clientID: '426431911145370',
+    clientSecret: '651d9f3824052cd8e9f3f6c5664cbea2',
+    callbackURL: 'https://api.facebook.leoleo.win/login/facebook/return'
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+      // To keep the example simple, the user's Facebook profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Facebook account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
+    });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
