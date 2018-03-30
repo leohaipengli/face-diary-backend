@@ -25,11 +25,7 @@ note that the port number is set to 3001 to avoid confict of React server.
 See [here](https://csil-git1.cs.surrey.sfu.ca/CMPT470WindowsVista/face-diary/wikis/apis) for whole list 
 
 ## Todo
-- Diary retrieve api
-    - get list
-    - get detail
-    - new entry
-    - update entry
-    - delete entry
 - Facebook login api  # postponed because of insecure http is forbidden.
+- Diary retrieve api
+    - update entry
 - Immigrate to Typescript # seems complicated
