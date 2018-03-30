@@ -10,10 +10,8 @@ router.get('/me', function (req, res, next) {
     res.json(generalResponse.json('unauthenticated', null, "Please Login"));
   } else {
     res.json(generalResponse.json(true, {
-      user: {
-        email: req.user.email,
-        name: req.user.name,
-      }
+      email: req.user.email,
+      name: req.user.name,
     }));
   }
 });
