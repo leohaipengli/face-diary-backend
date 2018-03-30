@@ -119,7 +119,7 @@ passport.use(User.createStrategy());
 passport.use(new FacebookStrategy({
     clientID: '426431911145370',
     clientSecret: '651d9f3824052cd8e9f3f6c5664cbea2',
-    callbackURL: 'https://api.facebook.leoleo.win/login/facebook/return'
+    callbackURL: 'https://api.facediary.leoleo.win/users/facebook-token'
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
