@@ -121,43 +121,44 @@ passport.use(new FacebookStrategy({
     clientSecret: '651d9f3824052cd8e9f3f6c5664cbea2',
     callbackURL: 'https://api.facediary.leoleo.win/users/facebook-token',
   },
-  function(req, accessToken, refreshToken, profile, done) {
+  function(req, accessToken, refreshToken, profile, cb) {
     // asynchronous verification, for effect...
     if (req.user) {
-      req.logout();
-    }
-    User.findOne({ facebookId: profile.id }, function (err, existingUser) {
-      if (existingUser) {
-        return done(undefined, existingUser);
-      } else {
-        User.register(new User({ email: profile.id, name: profile.name, facebookId: profile.id }), null, function (err, user) {
-          if (err) {
-            return res.json(generalResponse.json(false, null, err.message));
-          }
-          passport.authenticate('local')(req, res, function () {
-            res.json(generalResponse.json());
+      console.log("User is logged in ????");
+      cb(null);
+    } else {
+      User.findOne({ facebookId: profile.id }, function (err, existingUser) {
+        if (existingUser) {
+          console.log("user exists");
+          return cb(undefined, existingUser);
+        } else {
+          user = new User();
+          user.email = profile.id;  // better solution ?
+          user.facebookId = profile.id;
+          user.name = profile.name;
+          user.save(function (err) {
+            cb(err, user);
           });
-        })
-      }
-
-    });
+        }
+      });
+    }
     // process.nextTick(function () {
     //
     //   // To keep the example simple, the user's Facebook profile is returned to
     //   // represent the logged-in user.  In a typical application, you would want
     //   // to associate the Facebook account with a user record in your database,
     //   // and return that user instead.
-    //   return done(null, profile);
+    //   return cb(null, profile);
     // });
   }
 ));
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
 });
 
 // catch 404 and forward to error handler
