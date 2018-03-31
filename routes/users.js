@@ -33,7 +33,7 @@ router.post('/register', function (req, res, next) {
 router.get('/facebook-login', passport.authenticate('facebook'));
 
 router.get('/facebook-token', passport.authenticate('facebook', {
-  successRedirect: '/users/me',
+  successRedirect: 'http://facediary.leoleo.win',
   failureRedirect: '/login-failed'
 }));
 
