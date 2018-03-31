@@ -135,7 +135,7 @@ passport.use(new FacebookStrategy({
           user = new User();
           user.email = profile.id;  // better solution ?
           user.facebookId = profile.id;
-          user.name = profile.name;
+          user.name = (profile.name.givenName + profile.name.familyName) || profile.displayName;
           user.save(function (err) {
             cb(err, user);
           });
