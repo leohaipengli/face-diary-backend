@@ -99,14 +99,14 @@ app.use(function (req, res, next) {
 });
 
 // save redirect URL
-app.use(function (req, res, next) {
-  // After successful login, redirect back to the intended page
-  if (!req.user) {
-    req.session.returnTo = req.headers.origin;
-    console.log("Save redirect URL: " + req.session.returnTo);
-  }
-  next();
-});
+// app.use(function (req, res, next) {
+//   // After successful login, redirect back to the intended page
+//   if (!req.user) {
+//     req.session.returnTo = req.headers.origin;
+//     console.log("Save redirect URL: " + req.session.returnTo);
+//   }
+//   next();
+// });
 
 app.use('/', index);
 app.use('/users', users);

@@ -3,6 +3,7 @@ var passport = require('passport');
 var User = require('../models/user');
 var generalResponse = require('../tools/generalResponse');
 var router = express.Router();
+var consts = require('../consts');
 
 /* GET users listing. */
 router.get('/me', function (req, res, next) {
@@ -11,11 +12,6 @@ router.get('/me', function (req, res, next) {
   } else {
     res.json(generalResponse.json(true, req.user));
   }
-});
-
-router.get('/redirect', function (req, res) {
-  console.log("redirect to " + req.session.returnTo);
-  res.redirect(req.session.returnTo || 'about:blank');
 });
 
 // TODO: require privileges
@@ -47,7 +43,7 @@ router.get('/login-failed', function (req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/users/me',
+  successRedirect: consts.FRONTEND_URL,
   failureRedirect: '/users/login-failed'
 }));
 
