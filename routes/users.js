@@ -13,6 +13,10 @@ router.get('/me', function (req, res, next) {
   }
 });
 
+router.get('/redirect', function (req, res) {
+  res.redirect(req.session.returnTo || 'about:blank');
+});
+
 // TODO: require privileges
 router.get('/:email/info', function (req, res, next) {
   // TODO: query and return user info
@@ -33,8 +37,8 @@ router.post('/register', function (req, res, next) {
 router.get('/facebook-login', passport.authenticate('facebook'));
 
 router.get('/facebook-token', passport.authenticate('facebook', {
-  successRedirect: 'http://18.220.255.229:5000',
-  failureRedirect: '/login-failed'
+  successRedirect: '/users/redirect',
+  failureRedirect: '/users/login-failed'
 }));
 
 router.get('/login-failed', function (req, res) {
