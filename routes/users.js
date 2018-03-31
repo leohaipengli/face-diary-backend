@@ -14,6 +14,7 @@ router.get('/me', function (req, res, next) {
 });
 
 router.get('/redirect', function (req, res) {
+  console.log("redirect to " + req.session.returnTo);
   res.redirect(req.session.returnTo || 'about:blank');
 });
 
