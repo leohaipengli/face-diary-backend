@@ -34,7 +34,7 @@ router.post('/register', function (req, res, next) {
 router.get('/facebook-login', passport.authenticate('facebook'));
 
 router.get('/facebook-token', passport.authenticate('facebook', {
-  successRedirect: '/users/redirect',
+  successRedirect: consts.FRONTEND_URL,
   failureRedirect: '/users/login-failed'
 }));
 
@@ -43,7 +43,7 @@ router.get('/login-failed', function (req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: consts.FRONTEND_URL,
+  successRedirect: '/users/me',
   failureRedirect: '/users/login-failed'
 }));
 
