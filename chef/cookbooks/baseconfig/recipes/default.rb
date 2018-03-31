@@ -40,21 +40,10 @@ execute 'ntp_restart' do
   command 'service ntp restart'
 end
 
-# Create index.html to nginx root
-cookbook_file '/var/www/html/index.html' do
-  source 'index.html'
-  owner 'root'
-  group 'root'
-  mode '0755'
-end
 
 # move facediary server config file
-cookbook_file 'facediary' do
-  path "/etc/nginx/sites-available"
-end
-# link to site-enabled
-execute 'link_to_site_enabled' do
-  command 'ln -s /etc/nginx/sites-available/facebook-login /etc/nginx/sites-enabled'
+cookbook_file 'default' do
+  path "/etc/nginx/sites-available/default"
 end
 
 # restart nginx
