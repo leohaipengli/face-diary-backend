@@ -10,7 +10,7 @@ router.get('/me', function (req, res, next) {
   if (!req.isAuthenticated()) {
     res.json(generalResponse.json('unauthenticated', null, "Please Login"));
   } else {
-    res.json(generalResponse.json(true, req.user));
+    res.json(generalResponse.json(true, { email: req.user.email, name: req.user.name }));
   }
 });
 

@@ -127,9 +127,9 @@ passport.use(User.createStrategy());
 //   }
 // ));
 passport.use(new FacebookStrategy({
-    clientID: '426431911145370',
-    clientSecret: '651d9f3824052cd8e9f3f6c5664cbea2',
-    callbackURL: 'https://api.facediary.leoleo.win/users/facebook-token',
+    clientID: consts.FACEBOOK_APP_ID,
+    clientSecret: consts.FACEBOOK_APP_SECRET,
+    callbackURL: consts.BASE_URL + '/users/facebook-token',
   },
   function(req, accessToken, refreshToken, profile, cb) {
     // asynchronous verification, for effect...

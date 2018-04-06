@@ -15,8 +15,8 @@ exports.BASE_URL = 'https://api.facediary.leoleo.win';
 exports.FRONTEND_URL = 'http://18.220.255.229:5000';
 
 // facebook api
-exports.FACEBOOK_APP_ID = '197796200823028';
-exports.FACEBOOK_APP_SECRET = 'b77e3892d56b3eccc19ea1eac39bbc29';
+exports.FACEBOOK_APP_ID = '426431911145370';
+exports.FACEBOOK_APP_SECRET = '651d9f3824052cd8e9f3f6c5664cbea2';
 
 // emotion api
 exports.EMOTION_API_KEY = "59c0c894449d46fe9d2d1c439575655c";

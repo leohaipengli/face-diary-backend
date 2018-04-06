@@ -14,7 +14,11 @@ var entrySchema = new Schema({
   // path of photo
   facePhoto: { type: String,  max: 200, required: true},
   // get from azure api
-  emotions: { type: Schema.Types.ObjectId, ref: 'Emotion', required: true }
+  emotions: { type: Schema.Types.ObjectId, ref: 'Emotion', required: true },
+  // weather, geolocation
+  weather: { type: String, max: 20 },
+  location: { type: String, max: 50 },
+  coordinates: { type: [Number], default: null }
 },
 {
   // update date field (createdAt, updatedAt) of document before saved

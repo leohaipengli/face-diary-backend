@@ -32,6 +32,9 @@ router.post('/create', function (req, res) {
         keywords: req.body.keywords || [],
         content: req.body.content || '',
         facePhoto: req.body.facePhoto,
+        weather: req.body.weather,
+        location: req.body.location,
+        coordinates: req.body.coordinates,
         emotions: emotions._id,
       });
       entry.save(function (error) {
