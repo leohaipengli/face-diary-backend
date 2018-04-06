@@ -27,6 +27,12 @@ execute 'install_forever' do
   command 'npm install forever -g'
 end
 
+# install dependencies
+execute 'npm_install' do
+  command 'npm install'
+  cwd '/home/haipengl/project/'
+end
+
 # use forever to run project
 execute 'run_server' do
   command 'PORT=3001 forever start bin/www'
