@@ -12,7 +12,7 @@ exports.MONGO_URI = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary'
 
 // backend api base url
 exports.BASE_URL = 'https://api.facediary.leoleo.win';
-exports.FRONTEND_URL = 'http://18.220.255.229:5000';
+exports.FRONTEND_URL = 'https://facediary.leoleo.win';
 
 // facebook api
 exports.FACEBOOK_APP_ID = '426431911145370';
