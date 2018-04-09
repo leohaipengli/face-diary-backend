@@ -32,9 +32,6 @@ var entries = require('./routes/entries');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -50,19 +47,8 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// serve static files
-app.use(serveStatic(path.join(__dirname, 'public')));
 // serve media files
 app.use(serveStatic(path.join(__dirname, 'media')));
-
-var corsOptions = {
-  origin:['http://localhost:3000'],
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  methods:['GET', 'POST', 'OPTIONS'],
-  credentials: true // enable set cookie
-};
-
-// app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
 
@@ -98,16 +84,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-// save redirect URL
-// app.use(function (req, res, next) {
-//   // After successful login, redirect back to the intended page
-//   if (!req.user) {
-//     req.session.returnTo = req.headers.origin;
-//     console.log("Save redirect URL: " + req.session.returnTo);
-//   }
-//   next();
-// });
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/emotion', emotion);
@@ -115,17 +91,6 @@ app.use('/entries', entries);
 
 // passport config
 passport.use(User.createStrategy());
-// passport.use(new FacebookStrategt({
-//     clientID: consts.FACEBOOK_APP_ID,
-//     clientSecret: consts.FACEBOOK_APP_SECRET,
-//     callbackURL: consts.BASE_URL + "/users/facebook/callback"
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ));
 passport.use(new FacebookStrategy({
     clientID: consts.FACEBOOK_APP_ID,
     clientSecret: consts.FACEBOOK_APP_SECRET,
@@ -152,14 +117,6 @@ passport.use(new FacebookStrategy({
         }
       });
     }
-    // process.nextTick(function () {
-    //
-    //   // To keep the example simple, the user's Facebook profile is returned to
-    //   // represent the logged-in user.  In a typical application, you would want
-    //   // to associate the Facebook account with a user record in your database,
-    //   // and return that user instead.
-    //   return cb(null, profile);
-    // });
   }
 ));
 
