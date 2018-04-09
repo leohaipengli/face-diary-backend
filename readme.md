@@ -5,27 +5,25 @@ Use your face to keep diary.
 
 ## Run
 
-### install
+### deployed on Vagrant
+Run the following command to deploy the app at port **37532**, but this port is already used by us, so you may need to change to another port.
 ```shell
-$ npm install
+$ vagrant up --provision
 ```
-### start server
-development run on Linux or macOS
-```shell
-$ PORT=3001 DEBUG=face-diary:* npm run devstart
-```
-or on windows
-```shell
-$ set PORT=3001 DEBUG=face-diart:* & npm run devstart
-```
+After that you can access the app by accessing that port on [CPU470](http://csil-cpu470.csil.sfu.ca:37532/).
 
-note that the port number is set to 3001 to avoid confict of React server.
+Note that there app on this cpu470 server doesn't provide full features, see below.
 
-## API
-See [here](https://csil-git1.cs.surrey.sfu.ca/CMPT470WindowsVista/face-diary/wikis/apis) for whole list 
+### What's working and what's not
+All the features except **Facebook** login work.
+The reason why **Facebook** login doesn't work is their API for new app **doesn't support http protocol** which is believed insecure.
 
-## Todo
-- Facebook login api  # postponed because of insecure http is forbidden.
-- Diary retrieve api
-    - update entry
-- Immigrate to Typescript # seems complicated
+The full features of our app **can be accessed at an another server we have on AWS: [Face Diary](https://facediary.leoleo.win)**
+
+### account with pre-loaded data
+email: `asd@asd.ca`
+
+password: `asdasd`
+
+There are some data generated during the poster session provided by some guests and other group of people.
+
