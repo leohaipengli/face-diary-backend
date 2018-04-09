@@ -1,6 +1,5 @@
 // CORS
 
-exports.ALLOWED_HOSTS = ['http://localhost:3000', 'http://18.220.255.229:5000'];
 // media file
 exports.MEDIA_ROOT = process.cwd() + '/media/';
 exports.ACCEPTED_IMAGE_TYPE = ['.tif', '.tiff', '.jpeg', '.jpg', '.png', '.bmp'];
@@ -11,8 +10,8 @@ exports.FILENAME_LENGTH = 20;
 exports.MONGO_URI = 'mongodb://admin:Pw72UuGk@ds129050.mlab.com:29050/facediary';
 
 // backend api base url
-exports.BASE_URL = 'https://api.facediary.leoleo.win';
-exports.FRONTEND_URL = 'https://facediary.leoleo.win';
+exports.BASE_URL = 'localhost:3001';
+exports.FRONTEND_URL = 'http://csil-cpu470.csil.sfu.ca:37532';
 
 // facebook api
 exports.FACEBOOK_APP_ID = '426431911145370';
