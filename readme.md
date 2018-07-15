@@ -10,3 +10,9 @@ Run the following command to deploy the app at port **37532**, but this port is 
 ```shell
 $ vagrant up --provision
 ```
+
+## Demo
+
+![](imgs/diary-page.png)
+
+![](/imgs/poster.jpg)
