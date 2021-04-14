@@ -1,0 +1,37 @@
+.bottom-navbar {
+    padding-top: 70px;
+}
+
+.bottom-navbar
+li {
+    background-color: #f8f8f8;
+    border-radius: 0 !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    opacity: 0.88;
+}
+
+.bottom-navbar
+li a {
+    font-size: 16px;
+    font-weight: 500;
+    color:#3a3939;
+}
+
+
+.bottom-navbar
+li a:hover{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.bottom-navbar
+li a:active{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.bottom-navbar
+i {
+    font-size:25px !important;
+}

@@ -1,0 +1,32 @@
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+/* .Login button{
+  color: rgb(255, 255, 255);
+  background-color: blue;
+} */
+
+
+.facebook_button {
+  background-color: rgb(26, 58, 201);
+  padding-top:8px;
+  padding-bottom: 8px;
+}
+
+.facebook-login-block{
+  text-align:center;
+}
+
+  /* @media only screen and (max-width : 399px) {
+    .btnFacebook{
+      width: 100%
+    }
+  } */

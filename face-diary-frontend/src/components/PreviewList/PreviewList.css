@@ -1,0 +1,57 @@
+.preview-list {
+    margin-top: 15px;
+}
+
+.preview-container {
+    padding: 0%;
+    background-color: #EEE;
+    border-style: ridge;
+    border-width: 1px;
+    border-color: #000;
+    margin-bottom: 30px;
+}
+
+.preview-btn {
+    background-color: #AAA;
+    padding: 0%;
+    height: 160px;
+    overflow: hidden;
+}
+
+.frog {
+    height: 160px;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.preview-img {
+    width: 100%;
+    height: auto;
+}
+
+.preview-body {
+    padding: 10px 10px 10px 10px !important;
+    text-align: left;
+}
+
+.preview-sub-body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.preview-timestamp {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 0% !important;
+}
+
+.preview-weather {
+    line-height: 1.1;
+    font-size: 16px;
+}
+
+.small-padding {
+    padding-left: 7px;
+    padding-right: 7px;
+}

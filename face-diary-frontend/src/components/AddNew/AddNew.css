@@ -1,0 +1,61 @@
+.page-addnew.container {
+    padding:20px;
+}
+
+.page-addnew
+.row:not(:first-child) {
+    margin-top:20px;
+}
+
+.page-addnew
+.photo-block {
+    height:30vh;
+    font-size: 20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8f8f8;
+}
+
+.page-addnew
+input[type="text"],
+select.form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.page-addnew
+.content-block {
+    width:100%;
+}
+
+.page-addnew
+input[type="file"]{
+    display:none;
+}
+
+.page-addnew
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.page-addnew
+.prompt-text {
+  text-align: center;
+}
+
+.page-addnew
+.spinner {
+  margin-top:10px;
+  text-align: center;
+}
+
+.page-addnew
+button:disabled {
+  background-color: darkgrey;
+  border-color: darkgrey;
+}

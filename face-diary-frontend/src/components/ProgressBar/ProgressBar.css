@@ -1,0 +1,61 @@
+.progress .progress-bar {
+    animation-name: animateBar;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
+}
+
+@keyframes animateBar {
+    0% {transform: translateX(-100%);}
+    100% {transform: translateX(0);}
+}
+
+.bars-red {
+    background-color: rgba(255, 0, 0, 0.746) !important;
+}
+
+.bars-orange {
+    background-color: rgb(255, 115, 0) !important;
+}
+
+.bars-purple {
+    background-color: rgb(233, 27, 164) !important;
+}
+
+.bars-gray {
+    background-color: gray !important;
+}
+
+.bars-brown {
+    background-color: brown !important;
+}
+
+.bars-green {
+    background-color: rgba(0, 255, 21, 0.349) !important;
+    color: black !important;
+}
+
+.bars-light-blue {
+    background-color: rgb(134, 185, 183) !important;
+}
+
+.bars-light-yellow {
+    background-color: rgb(176, 185, 134) !important;
+}
+
+.bar-description {
+    font-size: 20px;
+}
+
+.vcenter {
+    display:flex;
+    align-items:center;
+}
+
+.no-padding {
+    padding: 0%;
+}
+
+.thick-bar {
+    height: 20px;
+}

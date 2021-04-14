@@ -1,0 +1,40 @@
+{
+  "name": "face-diary",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ajv": "^6.3.0",
+    "aws-amplify": "^0.2.11",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.0.0",
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.1",
+    "react": "^16.2.0",
+    "react-autosize-textarea": "^3.0.2",
+    "react-bootstrap": "^0.32.1",
+    "react-bootstrap-validation": "^0.1.11",
+    "react-dom": "^16.2.0",
+    "react-facebook-auth": "^1.4.0",
+    "react-facebook-login": "^4.0.1",
+    "react-modal": "^3.3.2",
+    "react-native-loading-button": "^1.0.2",
+    "react-responsive-modal": "^2.0.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "react-validation": "^3.0.7",
+    "revalidator": "^0.3.1",
+    "validator": "^9.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.53"
+  }
+}

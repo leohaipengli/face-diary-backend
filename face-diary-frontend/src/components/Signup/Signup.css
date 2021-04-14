@@ -1,0 +1,54 @@
+@media all and (min-width: 480px) {
+  .Signup {
+    padding: 60px 0;
+  }
+
+  .Signup form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+.Signup form span.help-block {
+  font-size: 14px;
+  padding-bottom: 10ppx;
+  color: #999;
+}
+
+/* .Signup button{
+  color: rgb(255, 255, 255);
+  background-color: blue;
+} */
+
+.signup_button{
+  margin-top:40px;
+}
+
+.signup_form{
+  margin-top:15px;
+}
+
+
+.Signup-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.Signup-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 80px;
+  margin: auto;
+}
+
+.Signup-title {
+  font-size: 1em;
+  text-align: center;
+}
+
+.signup_form {
+  margin-left: auto;
+  margin-right: auto;
+}

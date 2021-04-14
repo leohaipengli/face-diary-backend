@@ -1,0 +1,31 @@
+.diary-page {
+    padding: 15px 15px;
+}
+
+.diary-image {
+    background-color: bisque;
+    width: 100%;
+}
+
+.date-weather {
+    float: right;
+    line-height: 2.0;
+}
+
+.keyword-item {
+    font-size: 20px;
+    background-color: #888;
+    color:#eee;
+    border-radius: 5px;
+    padding: 3px 10px 3px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.border-padding {
+    padding: 15px 15px;
+}
+
+.diary-text {
+    font-size: 20px;
+}
